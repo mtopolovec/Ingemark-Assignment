@@ -1,0 +1,10 @@
+services:
+  app:
+    image: 'docker-spring-boot:latest'
+    build:
+      context: assignment/.
+    env_file:
+      - assignment/.env
+    container_name: app
+    ports:
+      - "8080:8080"
