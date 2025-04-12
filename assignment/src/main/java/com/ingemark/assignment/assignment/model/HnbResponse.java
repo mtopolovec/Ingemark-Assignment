@@ -38,4 +38,5 @@ public class HnbResponse {
 
     @JsonProperty("valuta")
     private String currency;
+
 }
