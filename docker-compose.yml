@@ -1,10 +1,30 @@
 services:
   app:
-    image: 'docker-spring-boot:latest'
     build:
-      context: assignment/.
-    env_file:
-      - assignment/.env
-    container_name: app
+      context: ./assignment
+      dockerfile: Dockerfile
+    container_name: ingemark-assignment-app
     ports:
       - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/productdb
+      SPRING_DATASOURCE_USERNAME: myuser
+      SPRING_DATASOURCE_PASSWORD: mypassword
+
+  db:
+    image: postgres:15
+    container_name: product-db
+    restart: always
+    environment:
+      POSTGRES_DB: productdb
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-data:

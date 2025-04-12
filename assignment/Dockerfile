@@ -1,16 +1,16 @@
 #Build
-FROM maven:3.9.7-amazoncorretto-21 AS build
+FROM maven:3.9.5-eclipse-temurin-21 AS build
 WORKDIR /app
+
 COPY pom.xml .
 COPY src ./src
-COPY .env .
-ARG SECRET
-ENV SECRET=$SECRET
-RUN mvn clean package -DskipTests -DSECRET=$SECRET
+
+RUN mvn clean package -DskipTests
 
 #Run
-FROM amazoncorretto:21
+FROM eclipse-temurin:21-jdk-alpine
 WORKDIR /app
-ENV SECRET=$SECRET
+
+#ENV SECRET=$SECRET
 COPY --from=build /app/target/*.jar ./app.jar
 CMD ["java", "-jar", "app.jar"]
