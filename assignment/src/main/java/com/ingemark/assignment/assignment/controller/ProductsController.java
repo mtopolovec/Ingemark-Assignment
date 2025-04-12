@@ -1,8 +1,6 @@
 package com.ingemark.assignment.assignment.controller;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.ingemark.assignment.assignment.dto.ApiResponseMsg;
 import com.ingemark.assignment.assignment.dto.ProductDTO;
 import com.ingemark.assignment.assignment.service.ProductService;
 import jakarta.validation.Valid;
@@ -19,11 +17,9 @@ import java.util.List;
 @RequestMapping("/api/products")
 public class ProductsController {
     private final ProductService productService;
-    private final ObjectMapper objectMapper;
 
-    public ProductsController(ProductService productService, ObjectMapper objectMapper) {
+    public ProductsController(ProductService productService) {
         this.productService = productService;
-        this.objectMapper = objectMapper;
     }
 
     @GetMapping
@@ -63,13 +59,10 @@ public class ProductsController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<JsonNode> deleteProduct(@PathVariable("id") final Long id) {
+    public ResponseEntity<ApiResponseMsg> deleteProduct(@PathVariable("id") final Long id) {
         log.debug("Deleted product with id of {}.", id);
         productService.deleteProduct(id);
-
-        ObjectNode responseMessage = objectMapper.createObjectNode();
-        responseMessage.put("message", "Successfully deleted product with id: " + id);
-
-        return new ResponseEntity<>(responseMessage, HttpStatus.OK);
+        String message = "Successfully deleted product with id: " + id;
+        return new ResponseEntity<>(new ApiResponseMsg(200, message, null), HttpStatus.OK);
     }
 }

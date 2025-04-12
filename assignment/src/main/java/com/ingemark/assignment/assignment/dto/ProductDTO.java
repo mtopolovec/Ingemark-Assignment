@@ -16,7 +16,7 @@ public class ProductDTO {
     private String name;
 
     @DecimalMin(value = "0.0", inclusive = false, message = "Price value must be more then 0!")
-    @Digits(integer=3, fraction=2)
+    @Digits(integer=7, fraction=2, message = "Price must be only 2 decimal values e.g. - .99")
     private BigDecimal priceEur;
 
     @NotNull(message = "Item status cannot be null. Can be only true or false!")
