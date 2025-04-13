@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.security.SecureRandom;
+import java.util.UUID;
 
 @Entity
 @Data
@@ -41,16 +41,8 @@ public class Product {
     }
 
     private String createCode() {
-        String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        StringBuilder serialNumber = new StringBuilder(10);
-        SecureRandom random = new SecureRandom();
-
-        for (int i = 0; i < 10; i++) {
-            int randomIndex = random.nextInt(chars.length());
-            serialNumber.append(chars.charAt(randomIndex));
-        }
-
-        return serialNumber.toString();
+        String uuid = UUID.randomUUID().toString().replaceAll("-", "").toUpperCase();
+        return uuid.substring(0, 10);
     }
 }
 
