@@ -67,12 +67,13 @@ Postman collection can be reached and imported from this [link](https://orange-f
 Swagger ui can be seen once running the application on next [link](http://localhost:8080/swagger-ui/index.html
 )
 
-## Local development setup
+## 💻 Local development setup
 
 - When opening in Intellij if you are using Community Edition you will need to edit running configuration to use local profile 
+you need to set next Environment variable
 ```bash
 spring.profiles.active=local
 ```
 - After profile is setup you can run the app and start developing
 - H2 database is on the next [link](http://localhost:8080/h2-console) (runs in memory and only when app is running)
-- You can use links from above regarding Postman collection to use app and swagger ui for help about app endpoints
+- You can use links from above regarding Postman collection to use app and Swagger-ui for help about app endpoints
