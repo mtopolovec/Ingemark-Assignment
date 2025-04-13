@@ -19,7 +19,7 @@ public class ProductDTO {
     @Digits(integer=7, fraction=2, message = "Price must be only 2 decimal values e.g. - .99")
     private BigDecimal priceEur;
 
-    @NotNull(message = "Item status cannot be null. Can be only true or false!")
+    @NotNull(message = "Product status cannot be null. Can be only true or false!")
     private Boolean isAvailable;
 
 }

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.ingemark.assignment.assignment.deserializer.HnbStringToBigDecimalDeserializer;
 import com.ingemark.assignment.assignment.model.HnbResponse;
+import com.ingemark.assignment.assignment.repository.ExchangeRateRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -27,6 +28,9 @@ class FetchHnbDataImpTest {
     @Mock
     private RestTemplate restTemplate;
 
+    @Mock
+    private ExchangeRateRepository exchangeRateRepository;
+
     private FetchHnbData fetchHnbData;
 
     private final String url = "https://api.hnb.hr/tecajn-eur/v3?valuta=USD";
@@ -37,7 +41,7 @@ class FetchHnbDataImpTest {
         SimpleModule module = new SimpleModule();
         module.addDeserializer(BigDecimal.class, new HnbStringToBigDecimalDeserializer());
         objectMapper.registerModule(module);
-        fetchHnbData = new FetchHnbDataImp(restTemplate, objectMapper);
+        fetchHnbData = new FetchHnbDataImp(restTemplate, objectMapper, exchangeRateRepository);
     }
 
     @Test

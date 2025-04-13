@@ -3,11 +3,15 @@ package com.ingemark.assignment.assignment.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.ingemark.assignment.assignment.deserializer.HnbStringToBigDecimalDeserializer;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class HnbResponse {
     @JsonProperty("broj_tecajnice")
     private String rateNumber;
@@ -39,4 +43,10 @@ public class HnbResponse {
     @JsonProperty("valuta")
     private String currency;
 
+    public HnbResponse(String currency, BigDecimal buyingRate, BigDecimal middleRate, BigDecimal sellingRate) {
+        this.currency = currency;
+        this.buyingRate = buyingRate;
+        this.middleRate = middleRate;
+        this.sellingRate = sellingRate;
+    }
 }
