@@ -62,9 +62,9 @@ docker-compose up --build
 | DELETE | `api/products/{id}`             | Delete a product             |
 | GET    | `api/data/`                     | Get latest USD exchange rate |
 
-Postman collection can be reached and imported from this [link](https://orange-firefly-351030.postman.co/workspace/Posao~6f36db3a-2d27-4ae1-acf4-bd3d97b2e4ee/collection/11488437-a0e206b9-4a5c-4892-ba91-a856b9aa565b?action=share&creator=11488437)
-
-Swagger ui can be seen once running the application on next [link](http://localhost:8080/swagger-ui/index.html
+- Postman collection can be reached and imported from this [link](https://orange-firefly-351030.postman.co/workspace/Posao~6f36db3a-2d27-4ae1-acf4-bd3d97b2e4ee/collection/11488437-a0e206b9-4a5c-4892-ba91-a856b9aa565b?action=share&creator=11488437)
+- Also there is one Postman collection in the root file ready for import
+- Swagger ui can be seen once running the application on next [link](http://localhost:8080/swagger-ui/index.html
 )
 
 ## 💻 Local development setup
